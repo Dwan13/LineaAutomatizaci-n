@@ -5,30 +5,26 @@ pipeline {
     timeout(time: 2, unit: 'MINUTES')
   }
 
-  environment {
-    ARTIFACT_ID = "Dwan13/test:${env.BUILD_NUMBER}"
-  }
-
   stages {
     stage('Build') {
       steps {
         script {
           dir("test") {
-            dockerImage = docker.build "${env.ARTIFACT_ID}"
+		sh "python fibonacci.py"
           }
         }
       }
     }
-    stage('Run unit tests') {
+    stage('Test on linux) {
       steps {
-        sh "docker run ${dockerImage.id} python test.py -v"
+        sh "python test.py"
       }
     }
-    stage('Validate feature') {
+    stage('Deploy') {
       steps {
         script {
           dir("test") {
-            sh "docker run ${dockerImage.id} behave"
+            sh "behave"
           }
         }
       }
