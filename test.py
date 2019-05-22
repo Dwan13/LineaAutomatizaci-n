@@ -1,31 +1,21 @@
-import listaDemultiplicacion
+import unittest
 
-class pruebaMultiplicacion(unittest.TestCase):
+from PruebaFib import fib
 
-    def listaDemultiplicacionEntero(self):
-        """ Prueba con números enteros """
-        data = [6, 9, 7, 2]
-        result = _list(data)
-        self.assertEqual(result,756, "Incorrecta multiplicacion de enteros")
+class pruebaFibonacci(unittest.TestCase):
 
-    def listaDemultiplicacionFlotante(self):
-        """ Prueba con números flotantes """
-        data = [6.5, 9.3, 7.2, 2.5]
-        result = listaDemultiplicacion(data)
-        self.assertEqual(result,1088.1, "Incorrecta multiplicacion de flotantes")
+    def SerieFibonacci_imp(self):
+        """ Prueba con n impar """
+        data = [5]
+        result = fib(data)
+        self.assertEqual(result,5, "Incorrecta serie de fibonacci con n impar")
 
-    def listaDemultiplicacionNegativo(self):
-        """ Prueba con números negativos """
-        data = [-6, -9, -7, -2]
-        result = listaDemultiplicacion(data)
-        self.assertEqual(result, 756, "Incorrecta multiplicacion de negativos")
-    
-    def listaDemultiplicacionMixto(self):
-        """ Prueba con números reales """
-        data = [3.4, -5, 8]
-        result = listaDemultiplicacion(data)
-        self.assertEqual(result, -136, "Incorrecta multiplicacion")
-
+    def SerieFibonacci_par(self):
+        """ Prueba con n par """
+        data = [8]
+        result = fib(data)
+        self.assertEqual(result,21, "Incorrecta serie de fibonacci con n par")
+  
 if __name__ == '__main__':
     unittest.main()
 
