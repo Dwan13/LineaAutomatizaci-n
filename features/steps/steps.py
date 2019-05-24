@@ -1,9 +1,10 @@
 from behave import given, when, then, step
 
 import sys
-sys.path.append("../..")
+sys.path.insert(0, "PruebaFib")
 
-from PruebaFib import fib
+import fibonacci
+
 
 
 @given('Yo tengo una serie de fibonacci')
